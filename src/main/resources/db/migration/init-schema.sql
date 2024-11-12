@@ -6,7 +6,7 @@ CREATE table PositionType (
 CREATE table Shops (
 	id bigint PRIMARY KEY,
 	name varchar(250) NOT NULL,
-	adress text
+	address text
 );
 
 CREATE table ElectroType (
