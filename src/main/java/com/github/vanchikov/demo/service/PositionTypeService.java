@@ -6,6 +6,8 @@ import com.github.vanchikov.demo.repository.PositionTypeRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,5 +30,9 @@ public class PositionTypeService {
         return PositionTypeDTO.builder()
                 .job_name(result.get().getJob_name())
                 .build();
+    }
+
+    public Page<PositionType> findAll(Pageable pageable) {
+        return positionTypeRepository.findAll(pageable);
     }
 }

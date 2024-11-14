@@ -5,6 +5,8 @@ import com.github.vanchikov.demo.model.EmployeeDTO;
 import com.github.vanchikov.demo.repository.EmployeeRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -41,5 +43,9 @@ public class EmployeeService {
                 .gender(result.get().isGender())
                 .electroTypes(result.get().getElectroTypes())
                 .build();
+    }
+
+    public Page<Employee> findAll(Pageable pageable) {
+        return employeeRepository.findAll(pageable);
     }
 }

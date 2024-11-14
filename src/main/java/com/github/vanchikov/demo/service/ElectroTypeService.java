@@ -5,6 +5,8 @@ import com.github.vanchikov.demo.model.ElectroTypeDTO;
 import com.github.vanchikov.demo.repository.ElectroTypeRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,5 +27,9 @@ public class ElectroTypeService {
         return ElectroTypeDTO.builder()
                 .name(result.get().getName())
                 .build();
+    }
+
+    public Page<ElectroType> findAll(Pageable pageable) {
+        return electroTypeRepository.findAll(pageable);
     }
 }

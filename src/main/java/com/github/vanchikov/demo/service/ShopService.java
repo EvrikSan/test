@@ -7,6 +7,8 @@ import com.github.vanchikov.demo.repository.ShopRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,6 +45,10 @@ public class ShopService {
     public int getQuantityByElectroItemIdAndShopId(long itemId, long shopId) {
         var result = electroShopRepository.findByElectroItemIdAndShopId(itemId, shopId);
         return result.getCount();
+    }
+
+    public Page<Shop> findAll(Pageable pageable) {
+        return shopRepository.findAll(pageable);
     }
 }
 

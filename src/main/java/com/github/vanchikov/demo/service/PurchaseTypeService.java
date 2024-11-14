@@ -6,6 +6,8 @@ import com.github.vanchikov.demo.repository.PurchaseTypeRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,5 +30,9 @@ public class PurchaseTypeService {
         return PurchaseTypeDTO.builder()
                 .name(result.get().getName())
                 .build();
+    }
+
+    public Page<PurchaseType> findall(Pageable pageable) {
+        return purchaseTypeRepository.findAll(pageable);
     }
 }

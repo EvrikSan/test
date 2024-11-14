@@ -5,6 +5,8 @@ import com.github.vanchikov.demo.model.PurchaseDTO;
 import com.github.vanchikov.demo.repository.PurchaseRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -33,5 +35,9 @@ public class PurchaseService {
                 .purchaseDate(result.get().getPurchaseDate())
                 .purchaseType(result.get().getPurchaseType())
                 .build();
+    }
+
+    public Page<Purchase> findAll(Pageable pageable) {
+        return purchaseRepository.findAll(pageable);
     }
 }
